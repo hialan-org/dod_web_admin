@@ -9,8 +9,8 @@ function GoogleLoginButton() {
         const profile = response.getBasicProfile();
         const access_token = response.getAuthResponse().access_token;
         login(access_token).then(result => {
-            localStorage.setItem(ACCESS_TOKEN, access_token);
-            localStorage.setItem(EMAIL, profile.getEmail());
+            sessionStorage.setItem(ACCESS_TOKEN, access_token);
+            sessionStorage.setItem(EMAIL, profile.getEmail());
             console.log("Log in succeed!");
         }).catch(err => {
             console.log("Log in failed!")
