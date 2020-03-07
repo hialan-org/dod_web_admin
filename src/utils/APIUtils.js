@@ -7,8 +7,8 @@ const request = (options) => {
     if(options.accessToken){
         headers.append('Authorization', 'Bearer ' + options.accessToken)
     } else {
-        if(localStorage.getItem(ACCESS_TOKEN)) {
-            headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
+        if(sessionStorage.getItem(ACCESS_TOKEN)) {
+            headers.append('Authorization', 'Bearer ' + sessionStorage.getItem(ACCESS_TOKEN))
         }
     }
 
@@ -27,7 +27,7 @@ const request = (options) => {
 };
 
 export function getCurrentUser() {
-    if(!localStorage.getItem(ACCESS_TOKEN)) {
+    if(!sessionStorage.getItem(ACCESS_TOKEN)) {
         return Promise.reject("No access token set.");
     }
 
@@ -43,4 +43,14 @@ export function login(accessToken) {
         method: 'POST',
         accessToken: accessToken
     });
+}
+
+export function getListUser() {
+    if(!sessionStorage.getItem(ACCESS_TOKEN)) {
+        return Promise.reject("No access token set.");
+    }
+    return request({
+        url: API_BASE_URL + "/users",
+        method: 'GET'
+    })
 }

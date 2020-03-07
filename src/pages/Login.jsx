@@ -1,18 +1,16 @@
 import React, {useState} from 'react';
+import { Redirect } from "react-router-dom";
 import {GoogleLoginButton} from "../components/GoogleLoginButton";
-import {ACCESS_TOKEN, EMAIL} from "../constants/data";
+import {ACCESS_TOKEN, EMAIL, ROLE} from "../constants/data";
+import {login} from "../utils/APIUtils";
 
-function Login() {
-    const [authenticated, setAuthenticated] = useState(localStorage.getItem(ACCESS_TOKEN)!=='');
-    const [email, setEmail] = useState(localStorage.getItem(EMAIL));
-    console.log(email);
-    console.log()
+function Login(props) {
     return (
-        authenticated ?  (
-            <h2>User: {email}</h2>
+        props.authenticated ?  (
+            <Redirect push to="/"/>
         ) : (
             <div className="App">
-                <GoogleLoginButton/>
+                <GoogleLoginButton onClick={props.responseGoogle}/>
             </div>
         )
     );
