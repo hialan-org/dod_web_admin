@@ -17,28 +17,34 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [10.x]
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-      
-    # Yarn install
-    - name: GitHub Action for Yarn
-      uses: Borales/actions-yarn@v2.1.0
-      with:
-        cmd: install
-        
-    # Yarn build
-    - name: Yarn build project
-      uses: Borales/actions-yarn@v2.1.0
-      with:
-        cmd: build
 
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: use node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: install, build and test
+      run: npm install
+      
+#    # Yarn install
+#    - name: GitHub Action for Yarn
+#      uses: Borales/actions-yarn@v2.1.0
+#      with:
+#        cmd: install
+#
+#    # Yarn build
+#    - name: Yarn build project
+#      uses: Borales/actions-yarn@v2.1.0
+#      with:
+#        cmd: build
         
     - name: configure amplify
       uses: ambientlight/amplify-cli-action@0.2.0
@@ -55,7 +61,7 @@ jobs:
       with:
         amplify_command: publish
         amplify_env: prod
-        build_command: 'yarn build'
+        build_command: 'npm run build'
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -5,12 +5,5 @@
 			"providerPlugin": "awscloudformation"
 		}
 	},
-	"auth": {
-		"dodadmin29cf1d6f": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false
-		}
-	}
+	"auth": {}
 }
