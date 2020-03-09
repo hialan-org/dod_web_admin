@@ -54,3 +54,13 @@ export function getListUser() {
         method: 'GET'
     })
 }
+
+export function deleteUser(userId) {
+    if(!sessionStorage.getItem(ACCESS_TOKEN)) {
+        return Promise.reject("No access token set.");
+    }
+    return request({
+        url: API_BASE_URL + "/users" + "/" + userId,
+        method: 'DELETE',
+    })
+}

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Table from "react-bootstrap/Table";
-import {getListUser} from "../utils/APIUtils";
+import {deleteUser, getListUser} from "../utils/APIUtils";
 import {ROLE, ROLE_ADMIN, EMAIL} from "../constants/data";
 import {Redirect} from "react-router-dom";
 
@@ -28,15 +28,30 @@ function ListUser(props) {
         })
     }, []);
 
+    function onClickDelete(userId) {
+        deleteUser(userId).then(result => {
+            console.log("Delete success");
+            getListUser().then(result => {
+                setUsers(result.body);
+                setIsLoading(false);
+            }).catch(err => {
+                console.log(err);
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
     function buttonFormatter(cell, row, rowIndex, formatExtraData) {
+        console.log(row);
         return (
-            <Button variant="danger">Delete</Button>
+            <Button variant="danger" onClick={() => onClickDelete(row.userId)}>Delete</Button>
+            // <Button variant="danger">Delete</Button>
         );
     }
 
     function dateFormatter(cell, row, rowIndex, formatExtraData) {
         const date = new Date(cell);
-        console.log(date)
         return (
             <span>{date.toDateString()}</span>
         )

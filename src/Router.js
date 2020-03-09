@@ -5,6 +5,7 @@ import {ListUser} from "./pages/ListUser";
 import {login} from "./utils/APIUtils";
 import {ACCESS_TOKEN, EMAIL, ROLE} from "./constants/data";
 import {NavBar} from "./components/AppBar";
+import {NotFound} from "./pages/NotFound";
 
 const Routes = () => {
     const [authenticated, setAuthenticated] = useState(!!sessionStorage.getItem(ACCESS_TOKEN));
@@ -42,6 +43,7 @@ const Routes = () => {
                         {/*<Route path="/login" exact*/}
                         {/*       component={() => <Login authenticated={authenticated} responseGoogle={responseGoogle}/>}/>*/}
                         <Route path="/users" exact component={() => <ListUser authenticated={authenticated}/>}/>
+                        <Route path="/*" component={() => <NotFound/>} />
                     </Switch>
                 </div>
             </Router>
