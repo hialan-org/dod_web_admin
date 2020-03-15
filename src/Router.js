@@ -9,18 +9,20 @@ import {NotFound} from "./pages/NotFound";
 
 const Routes = () => {
     const [authenticated, setAuthenticated] = useState(!!sessionStorage.getItem(ACCESS_TOKEN));
+    const [loading, setLoading] = useState(false);
 
     const responseGoogle = (response) => {
-        console.log(response);
+        setLoading(true);
         const access_token = response.getAuthResponse().access_token;
         login(access_token).then(result => {
-            console.log(result.body);
             sessionStorage.setItem(ACCESS_TOKEN, access_token);
             sessionStorage.setItem(EMAIL, result.body.email);
             sessionStorage.setItem(ROLE, result.body.role);
+            setLoading(false);
             setAuthenticated(true);
             console.log("Log in succeed!");
         }).catch(err => {
+            setLoading(false);
             console.log("Log in failed!")
         });
     }
@@ -37,7 +39,7 @@ const Routes = () => {
         <>
             <Router>
                 <div>
-                    <NavBar authenticated={authenticated} loginGoogle={responseGoogle} logout={logout}/>
+                    <NavBar authenticated={authenticated} loginGoogle={responseGoogle} logout={logout} isLoading={loading}/>
                     <Switch>
                         <Route path="/" exact component={() => <Homepage authenticated={authenticated} logout={logout}/>}/>
                         {/*<Route path="/login" exact*/}

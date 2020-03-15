@@ -9,6 +9,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import overlayFactory from 'react-bootstrap-table2-overlay';
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
+import Badge from "react-bootstrap/Badge";
 
 function ListUser(props) {
     const [users, setUsers] = useState([]);
@@ -19,13 +20,14 @@ function ListUser(props) {
         if ((sessionStorage.getItem(ROLE) && sessionStorage.getItem(ROLE) !== ROLE_ADMIN)
             || !props.authenticated) {
             setRedirect("/");
+        } else {
+            getListUser().then(result => {
+                setUsers(result.body);
+                setIsLoading(false);
+            }).catch(err => {
+                console.log(err);
+            })
         }
-        getListUser().then(result => {
-            setUsers(result.body);
-            setIsLoading(false);
-        }).catch(err => {
-            console.log(err);
-        })
     }, []);
 
     function onClickDelete(userId) {
@@ -43,10 +45,13 @@ function ListUser(props) {
     }
 
     function buttonFormatter(cell, row, rowIndex, formatExtraData) {
-        console.log(row);
         return (
-            <Button variant="danger" onClick={() => onClickDelete(row.userId)}>Delete</Button>
-            // <Button variant="danger">Delete</Button>
+            <Button
+                disabled={row.email === sessionStorage.getItem(EMAIL)}
+                variant="danger"
+                onClick={() => onClickDelete(row.userId)}>
+                Delete
+            </Button>
         );
     }
 
@@ -68,8 +73,8 @@ function ListUser(props) {
         text: 'Created Date',
         formatter: dateFormatter,
     }, {
-        dataField: "edit",
-        text: "Edit",
+        dataField: "actions",
+        text: "Actions",
         sort: false,
         formatter: buttonFormatter,
         headerAttrs: {width: 100},
@@ -79,12 +84,19 @@ function ListUser(props) {
         redirect ?
             (<Redirect push to="/"/>)
             : (
-                <BootstrapTable
-                    keyField='userId'
-                    data={users}
-                    columns={columns}
-                    noDataIndication={() => <Spinner animation="border"/>}
-                />
+                <>
+                    <div className="list-users-header">
+                            <Badge pill variant="primary">Total Users: {users.length}</Badge>
+                            <Badge pill variant="secondary">Total Users's Stock: </Badge>
+                            <Badge pill variant="secondary">Total Amount of User Money: </Badge>
+                    </div>
+                    <BootstrapTable
+                        keyField='userId'
+                        data={users}
+                        columns={columns}
+                        noDataIndication={() => <Spinner animation="border"/>}
+                    />
+                </>
             )
     )
 }

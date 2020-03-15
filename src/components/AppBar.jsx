@@ -2,6 +2,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import React from "react";
 import {GoogleLoginButton} from "./GoogleLoginButton";
+import Spinner from "react-bootstrap/Spinner";
 
 
 function NavBar(props) {
@@ -16,6 +17,7 @@ function NavBar(props) {
                     {props.authenticated && (<Nav.Link href="/users">Users</Nav.Link>)}
                 </Nav>
                 <Nav>
+                    {props.isLoading ? <Spinner animation="border" size="sm"/> : ""}
                     {props.authenticated
                         ? (<a href="#" onClick={props.logout}>Logout</a>)
                         : (<GoogleLoginButton onClick={props.loginGoogle}/>)}
