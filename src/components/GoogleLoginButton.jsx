@@ -1,7 +1,5 @@
 import React from 'react';
 import GoogleLogin from "react-google-login";
-import {ACCESS_TOKEN, EMAIL} from "../constants/data";
-import {login} from "../utils/APIUtils";
 
 function GoogleLoginButton(props) {
 
