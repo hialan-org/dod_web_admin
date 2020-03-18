@@ -50,7 +50,7 @@ jobs:
       uses: ambientlight/amplify-cli-action@0.2.0
       with:
         amplify_command: configure
-        amplify_env: react
+        amplify_env: prod
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
