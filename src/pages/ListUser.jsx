@@ -73,6 +73,9 @@ function ListUser(props) {
         text: 'Created Date',
         formatter: dateFormatter,
     }, {
+        dataField: 'role',
+        text: 'Role',
+    }, {
         dataField: "actions",
         text: "Actions",
         sort: false,
