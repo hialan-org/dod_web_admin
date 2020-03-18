@@ -1,4 +1,5 @@
-export const API_BASE_URL = 'https://5dih1d57x5.execute-api.us-west-1.amazonaws.com/Prod';
+// export const API_BASE_URL = 'https://5dih1d57x5.execute-api.us-west-1.amazonaws.com/Prod';
+export const API_BASE_URL = 'https://7nfta4t8di.execute-api.us-west-1.amazonaws.com/Prod';
 export const ACCESS_TOKEN = 'accessToken';
 export const EMAIL = 'email';
 

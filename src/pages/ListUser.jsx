@@ -47,7 +47,7 @@ function ListUser(props) {
     function buttonFormatter(cell, row, rowIndex, formatExtraData) {
         return (
             <Button
-                disabled={row.email === sessionStorage.getItem(EMAIL)}
+                disabled={row.email === sessionStorage.getItem(EMAIL) || row.active==0}
                 variant="danger"
                 onClick={() => onClickDelete(row.userId)}>
                 Delete
@@ -60,6 +60,15 @@ function ListUser(props) {
         return (
             <span>{date.toDateString()}</span>
         )
+    }
+
+    function statusFormatter(cell, row, rowIndex, formatExtraData) {
+        const status = cell;
+        if(status==1){
+            return <span>Active</span>
+        } else {
+            return <span>De-Active</span>
+        }
     }
 
     const columns = [{
@@ -76,6 +85,10 @@ function ListUser(props) {
         dataField: 'role',
         text: 'Role',
     }, {
+        dataField: 'active',
+        text: 'Status',
+        formatter: statusFormatter,
+    }, {
         dataField: "actions",
         text: "Actions",
         sort: false,
@@ -90,6 +103,9 @@ function ListUser(props) {
                 <>
                     <div className="list-users-header">
                             <Badge pill variant="primary">Total Users: {users.length}</Badge>
+                            <Badge pill variant="primary">Total Active Users: {users.filter(user => {
+                                return user.active==1
+                            }).length}</Badge>
                             <Badge pill variant="secondary">Total Users's Stock: </Badge>
                             <Badge pill variant="secondary">Total Amount of User Money: </Badge>
                     </div>
