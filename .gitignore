@@ -22,21 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#amplify
-amplify/\#current-cloud-backend
-amplify/.config/local-*
-amplify/mock-data
-amplify/backend/amplify-meta.json
-amplify/backend/awscloudformation
-build/
-dist/
-node_modules/
-aws-exports.js
-awsconfiguration.json
-amplifyconfiguration.json
-amplify-gradle-config.json
-amplifyxc.config
-
 
 # Created by https://www.gitignore.io/api/node,react,intellij
 # Edit at https://www.gitignore.io/?templates=node,react,intellij
@@ -244,3 +229,18 @@ sketch
 
 # Webpack exclude
 dist/
+
+#amplify
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/mock-data
+amplify/backend/amplify-meta.json
+amplify/backend/awscloudformation
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplify-gradle-config.json
+amplifyxc.config
