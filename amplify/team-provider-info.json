@@ -1,28 +1,28 @@
 {
-    "react": {
+    "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-dod-admin-react-181536-authRole",
-            "UnauthRoleArn": "arn:aws:iam::932815571074:role/amplify-dod-admin-react-181536-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::932815571074:role/amplify-dod-admin-react-181536-authRole",
+            "AuthRoleName": "amplify-dodwebadmin-dev-133257-authRole",
+            "UnauthRoleArn": "arn:aws:iam::454639885099:role/amplify-dodwebadmin-dev-133257-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::454639885099:role/amplify-dodwebadmin-dev-133257-authRole",
             "Region": "us-west-2",
-            "DeploymentBucketName": "amplify-dod-admin-react-181536-deployment",
-            "UnauthRoleName": "amplify-dod-admin-react-181536-unauthRole",
-            "StackName": "amplify-dod-admin-react-181536",
-            "StackId": "arn:aws:cloudformation:us-west-2:932815571074:stack/amplify-dod-admin-react-181536/0bff3820-5907-11ea-b5ac-022a2754311a",
-            "AmplifyAppId": "d2j65s991x96vu"
+            "DeploymentBucketName": "amplify-dodwebadmin-dev-133257-deployment",
+            "UnauthRoleName": "amplify-dodwebadmin-dev-133257-unauthRole",
+            "StackName": "amplify-dodwebadmin-dev-133257",
+            "StackId": "arn:aws:cloudformation:us-west-2:454639885099:stack/amplify-dodwebadmin-dev-133257/d29836b0-6a20-11ea-86e5-029123b1cc42",
+            "AmplifyAppId": "dx5m06tvhfjsn"
         }
     },
     "prod": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-dod-admin-prod-155637-authRole",
-            "UnauthRoleArn": "arn:aws:iam::932815571074:role/amplify-dod-admin-prod-155637-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::932815571074:role/amplify-dod-admin-prod-155637-authRole",
+            "AuthRoleName": "amplify-dodwebadmin-prod-134119-authRole",
+            "UnauthRoleArn": "arn:aws:iam::454639885099:role/amplify-dodwebadmin-prod-134119-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::454639885099:role/amplify-dodwebadmin-prod-134119-authRole",
             "Region": "us-west-2",
-            "DeploymentBucketName": "amplify-dod-admin-prod-155637-deployment",
-            "UnauthRoleName": "amplify-dod-admin-prod-155637-unauthRole",
-            "StackName": "amplify-dod-admin-prod-155637",
-            "StackId": "arn:aws:cloudformation:us-west-2:932815571074:stack/amplify-dod-admin-prod-155637/8a1d36a0-6972-11ea-a8a1-0ae3e770e3b8",
-            "AmplifyAppId": "d2j65s991x96vu"
+            "DeploymentBucketName": "amplify-dodwebadmin-prod-134119-deployment",
+            "UnauthRoleName": "amplify-dodwebadmin-prod-134119-unauthRole",
+            "StackName": "amplify-dodwebadmin-prod-134119",
+            "StackId": "arn:aws:cloudformation:us-west-2:454639885099:stack/amplify-dodwebadmin-prod-134119/fe5a7eb0-6a21-11ea-946a-06724f918394",
+            "AmplifyAppId": "dx5m06tvhfjsn"
         }
     }
 }
