@@ -28,6 +28,8 @@
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.4.1",
+    "global": "^4.4.0",
+    "hosting": "^0.0.2",
     "minimist": "^1.2.5",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.17",
