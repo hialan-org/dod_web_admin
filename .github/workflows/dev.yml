@@ -32,18 +32,6 @@ jobs:
       - name: install, build and test
         run: npm install
 
-          #    # Yarn install
-          #    - name: GitHub Action for Yarn
-          #      uses: Borales/actions-yarn@v2.1.0
-          #      with:
-          #        cmd: install
-          #
-          #    # Yarn build
-          #    - name: Yarn build project
-          #      uses: Borales/actions-yarn@v2.1.0
-          #      with:
-          #        cmd: build
-
       - name: configure amplify
         uses: ambientlight/amplify-cli-action@0.2.0
         with:
