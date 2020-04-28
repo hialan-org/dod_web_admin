@@ -7,11 +7,6 @@ import {ACCESS_TOKEN, EMAIL, ROLE, ROLE_ADMIN} from "./constants/data";
 import {getListUser} from "./utils/APIUtils";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(!!sessionStorage.getItem(ACCESS_TOKEN));
-
-  useEffect(() => {
-    setAuthenticated(!!sessionStorage.getItem(ACCESS_TOKEN));
-  }, [sessionStorage.getItem(ACCESS_TOKEN)]);
 
   return (
       <>

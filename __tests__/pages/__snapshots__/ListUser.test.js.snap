@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListUser /> if users table is not empty 1`] = `
+Array [
+  <div
+    className="list-users-header"
+  >
+    <span
+      className="badge badge-pill badge-primary"
+    >
+      Total Users: 
+      2
+    </span>
+    <span
+      className="badge badge-pill badge-primary"
+    >
+      Total Active Users: 
+      2
+    </span>
+    <span
+      className="badge badge-pill badge-secondary"
+    >
+      Total Users's Stock: 
+    </span>
+    <span
+      className="badge badge-pill badge-secondary"
+    >
+      Total Amount of User Money: 
+    </span>
+  </div>,
+  <div
+    className="react-bootstrap-table"
+  >
+    <table
+      className="table table-bordered"
+    >
+      <thead>
+        <tr>
+          <th
+            tabIndex={0}
+          >
+            User ID
+          </th>
+          <th
+            tabIndex={0}
+          >
+            Email
+          </th>
+          <th
+            tabIndex={0}
+          >
+            Created Date
+          </th>
+          <th
+            tabIndex={0}
+          >
+            Role
+          </th>
+          <th
+            tabIndex={0}
+          >
+            Status
+          </th>
+          <th
+            tabIndex={0}
+            width={100}
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className={null}
+          style={Object {}}
+        >
+          <td>
+            1
+          </td>
+          <td>
+            test1@gmail.com
+          </td>
+          <td>
+            <span>
+              Tue Apr 28 2020
+            </span>
+          </td>
+          <td>
+            user
+          </td>
+          <td>
+            <span>
+              Active
+            </span>
+          </td>
+          <td>
+            <button
+              className="btn btn-danger"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        <tr
+          className={null}
+          style={Object {}}
+        >
+          <td>
+            2
+          </td>
+          <td>
+            test1@gmail.com
+          </td>
+          <td>
+            <span>
+              Tue Apr 28 2020
+            </span>
+          </td>
+          <td>
+            user
+          </td>
+          <td>
+            <span>
+              Active
+            </span>
+          </td>
+          <td>
+            <button
+              className="btn btn-danger"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>,
+]
+`;
