@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dog of The Dow Admin Management Website
+The website is using to manage the list of user for Dog of The Dow mobile application. Admin can use the website to access the data of the product and also manage their users.  
+The application is writing in `React`. Then it will be bundled and deployed using `Webpack` and `AWS CLI`.  
+![](https://github.com/hialan-org/dod_web_admin/workflows/Web%20deploy%20(Dev)/badge.svg) ![](https://github.com/hialan-org/dod_web_admin/workflows/Web%20deploy/badge.svg) ![](https://img.shields.io/github/issues/hialan-org/dod_web_admin?color=orange)
 
-## Available Scripts
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.  
+See deployment for notes on how to deploy the project on a live system.
 
-In the project directory, you can run:
+### Prerequisites
+Download and install NodeJS:  
+`https://nodejs.org/en/download/`
 
-### `npm start`
+### How to run project
+To run the project locally in your machine, follow these steps:
+- Clone the repo
+- In the project directory, run:  
+`npm start` or `yarn start`  
+Which will run the app in development mode.  
+Open http://localhost:8080 to view it in the browser.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Development
+To start enhance or fix a bug, follow these steps:
+- Fork the repo
+- Create a new branch (git checkout -b new-features)
+- Make the appropriate changes in the files
+- Add changes to reflect the changes made
+- Commit your changes (git commit -am 'Add new features')
+- Push to the branch (git push origin new-features)
+- Create a Pull Request
 
 ### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+To deploy the project to AWS S3 Bucket with CloudFront, follow these steps:
+- Install AWS Amplify CLI on your computer: `npm install -g @aws-amplify/cli`.
+- Setup AWS Amplify: `amplify configure`. It will ask you to sign into the AWS Console. After you signed in, Amplify CLI will ask you to create IAM user (Create a user with `AdministratorAccess` to your account to provision AWS resources for you).
+- Once the user created, AWS Amplify will ask you to provide `accessKeyId` and `secretAccessKey` to connect Amplify CLI with newly created IAM user.
+- Then run `amplify init`, and you need to enter some information of your project.
+- Add hosting service into your app: `amplify add hosting`.
+- Publish your app: `amplify publish`, which will push your application to S3 bucket and create a CloudFront that connect with it.
+- Congratulation, your app is online!
