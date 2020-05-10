@@ -4,7 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Prerequisites
 Please install 'webpack-cli' in addition to webpack itself to use the CLI
+
 -> When using npm: npm i -D webpack-cli
+
 -> When using yarn: yarn add -D webpack-cli
 
 In the project directory, you can run:
