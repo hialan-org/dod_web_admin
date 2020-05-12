@@ -80,7 +80,7 @@ export function getTotalUserMoney() {
         return Promise.reject("No access token set.");
     }
     return request({
-        url: API_BASE_URL + "/users",
+        url: API_BASE_URL + "/statistics/totalAmountOfUserMoney",
         method: 'GET'
     })
 }

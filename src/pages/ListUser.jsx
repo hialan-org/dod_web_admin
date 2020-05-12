@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Table from "react-bootstrap/Table";
-import {deleteUser, getListUser, getTotalUserStock} from "../utils/APIUtils";
+import {deleteUser, getListUser, getTotalUserMoney, getTotalUserStock} from "../utils/APIUtils";
 import {ROLE, ROLE_ADMIN, EMAIL} from "../constants/data";
 import {Redirect} from "react-router-dom";
 
@@ -26,20 +26,21 @@ function ListUser(props) {
         } else {
 
             getTotalUserStock().then(result => {
-                console.log(result.body);
-                setTotalStocks(result.body.length);
+                console.log("getTotalUserStock: "+JSON.parse(result.body).count);
+                setTotalStocks(JSON.parse(result.body).count);
+            }).catch(err => {
+                console.log(err);
+            });
+
+            getTotalUserMoney().then(result => {
+                console.log("getTotalUserMoney:"+JSON.parse(result.body).total);
+                let val = Math.round(JSON.parse(result.body).total);
+                setTotalMoney(val.toString(10));
             }).catch(err => {
                 console.log(err);
             });
 
             getListUser().then(result => {
-                setTotalMoney(2300);
-            }).catch(err => {
-                console.log(err);
-            });
-
-            getListUser().then(result => {
-                console.log(result.body);
                 setUsers(result.body);
                 setIsLoading(false);
             }).catch(err => {
