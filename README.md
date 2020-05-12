@@ -8,6 +8,10 @@ These instructions will get you a copy of the project up and running on your loc
 See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
+Install webpack-cli: 
+
+npm install --save-dev webpack-cli
+
 Download and install NodeJS:  
 `https://nodejs.org/en/download/`
 
