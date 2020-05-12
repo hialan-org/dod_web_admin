@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Table from "react-bootstrap/Table";
-import {deleteUser, getListUser} from "../utils/APIUtils";
+import {deleteUser, getListUser, getTotalUserMoney, getTotalUserStock} from "../utils/APIUtils";
 import {ROLE, ROLE_ADMIN, EMAIL} from "../constants/data";
 import {Redirect} from "react-router-dom";
 
@@ -16,11 +16,30 @@ function ListUser(props) {
     const [redirect, setRedirect] = useState("");
     const [isLoading, setIsLoading] = useState(true);
 
+    const [totalStocks, setTotalStocks] = useState("");
+    const [totalMoney, setTotalMoney] = useState("");
+
     useEffect(() => {
         if ((sessionStorage.getItem(ROLE) && sessionStorage.getItem(ROLE) !== ROLE_ADMIN)
             || !props.authenticated) {
             setRedirect("/");
         } else {
+
+            getTotalUserStock().then(result => {
+                console.log("getTotalUserStock: "+JSON.parse(result.body).count);
+                setTotalStocks(JSON.parse(result.body).count);
+            }).catch(err => {
+                console.log(err);
+            });
+
+            getTotalUserMoney().then(result => {
+                console.log("getTotalUserMoney:"+JSON.parse(result.body).total);
+                let val = Math.round(JSON.parse(result.body).total);
+                setTotalMoney(val.toString(10));
+            }).catch(err => {
+                console.log(err);
+            });
+
             getListUser().then(result => {
                 setUsers(result.body);
                 setIsLoading(false);
@@ -106,8 +125,8 @@ function ListUser(props) {
                             <Badge pill variant="primary">Total Active Users: {users.filter(user => {
                                 return user.active==1
                             }).length}</Badge>
-                            <Badge pill variant="secondary">Total Users's Stock: </Badge>
-                            <Badge pill variant="secondary">Total Amount of User Money: </Badge>
+                            <Badge pill variant="secondary">Total Users's Stock: {totalStocks}</Badge>
+                            <Badge pill variant="secondary">Total Amount of User Money: {totalMoney}</Badge>
                     </div>
                     <BootstrapTable
                         keyField='userId'
