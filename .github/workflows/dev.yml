@@ -6,7 +6,7 @@ name: Web deploy
 # events but only for the master branch
 on:
   push:
-    branches: [ hiepbp_dev ]
+    branches: [ hiepbp_dev, anu_dev ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
