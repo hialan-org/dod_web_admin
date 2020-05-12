@@ -26,15 +26,15 @@ function ListUser(props) {
         } else {
 
             getTotalUserStock().then(result => {
-                console.log("getTotalUserStock: "+JSON.parse(result.body).count);
-                setTotalStocks(JSON.parse(result.body).count);
+                console.log("getTotalUserStock: "+result.body);
+                setTotalStocks(result.body);
             }).catch(err => {
                 console.log(err);
             });
 
             getTotalUserMoney().then(result => {
-                console.log("getTotalUserMoney:"+JSON.parse(result.body).total);
-                let val = Math.round(JSON.parse(result.body).total);
+                console.log("getTotalUserMoney:"+result.body);
+                let val = Math.round(result.body);
                 setTotalMoney(val.toString(10));
             }).catch(err => {
                 console.log(err);
