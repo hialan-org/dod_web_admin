@@ -38,6 +38,9 @@ const styles = {
     },
     body : {
         flex:1,
+        padding:10,
+        paddingLeft:30,
+        margin:10,
         color: 'snow',
 
     }
