@@ -64,3 +64,23 @@ export function deleteUser(userId) {
         method: 'DELETE',
     })
 }
+
+export function getTotalUserStock() {
+    if(!sessionStorage.getItem(ACCESS_TOKEN)) {
+        return Promise.reject("No access token set.");
+    }
+    return request({
+        url: API_BASE_URL + "/statistics/countTotalUserStockNumber",
+        method: 'GET'
+    })
+}
+
+export function getTotalUserMoney() {
+    if(!sessionStorage.getItem(ACCESS_TOKEN)) {
+        return Promise.reject("No access token set.");
+    }
+    return request({
+        url: API_BASE_URL + "/users",
+        method: 'GET'
+    })
+}
