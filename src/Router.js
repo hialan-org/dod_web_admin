@@ -12,6 +12,7 @@ const Routes = () => {
     const [loading, setLoading] = useState(false);
 
     const responseGoogle = (response) => {
+        console.log(response);
         setLoading(true);
         const access_token = response.getAuthResponse().access_token;
         login(access_token).then(result => {

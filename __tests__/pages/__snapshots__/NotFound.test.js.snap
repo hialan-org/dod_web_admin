@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound /> test match snapshot 1`] = `
+<div>
+  <img
+    src="https://i.imgur.com/6F707L7.jpg"
+    style={
+      Object {
+        "display": "block",
+        "height": 600,
+        "margin": "auto",
+        "position": "relative",
+      }
+    }
+    title="source: imgur.com"
+  />
+</div>
+`;

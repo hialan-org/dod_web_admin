@@ -7,6 +7,7 @@ if(hostname === "d1jjkkatwr4a0n.cloudfront.net") { // prod url
 } else {
     endpoint = 'https://dlj4o26lpe.execute-api.us-west-2.amazonaws.com/Prod';
 }
+console.log(endpoint);
 export const API_BASE_URL = endpoint;
 export const ACCESS_TOKEN = 'accessToken';
 export const EMAIL = 'email';
