@@ -11,6 +11,9 @@ import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 
+import "../i18n/i18n";
+import { useTranslation } from "react-i18next";
+
 function ListUser(props) {
     const [users, setUsers] = useState([]);
     const [redirect, setRedirect] = useState("");
@@ -19,6 +22,8 @@ function ListUser(props) {
     const [totalStocks, setTotalStocks] = useState("");
     const [totalMoney, setTotalMoney] = useState("");
     const [latestActivity, setLatestActivity] = useState("");
+
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         if ((sessionStorage.getItem(ROLE) && sessionStorage.getItem(ROLE) !== ROLE_ADMIN)
@@ -87,7 +92,7 @@ function ListUser(props) {
                 disabled={row.email === sessionStorage.getItem(EMAIL) || row.active==0}
                 variant="danger"
                 onClick={() => onClickDelete(row.userId)}>
-                Delete
+                {t("Delete")}
             </Button>
         );
     }
@@ -102,32 +107,32 @@ function ListUser(props) {
     function statusFormatter(cell, row, rowIndex, formatExtraData) {
         const status = cell;
         if(status==1){
-            return <span>Active</span>
+            return <span>{t("Active")}</span>
         } else {
-            return <span>De-Active</span>
+            return <span>{t("De-Active")}</span>
         }
     }
 
     const columns = [{
         dataField: 'userId',
-        text: 'User ID'
+        text: t('User ID')
     }, {
         dataField: 'email',
-        text: 'Email'
+        text: t('Email')
     }, {
         dataField: 'createdDate',
-        text: 'Created Date',
+        text: t('Created Date'),
         formatter: dateFormatter,
     }, {
         dataField: 'role',
-        text: 'Role',
+        text: t('Role'),
     }, {
         dataField: 'active',
-        text: 'Status',
+        text: t('Status'),
         formatter: statusFormatter,
     }, {
         dataField: "actions",
-        text: "Actions",
+        text: t("Actions"),
         sort: false,
         formatter: buttonFormatter,
         headerAttrs: {width: 100},
@@ -139,13 +144,13 @@ function ListUser(props) {
             : (
                 <>
                     <div className="list-users-header">
-                            <Badge pill variant="primary">Total Users: {users.length}</Badge>
-                            <Badge pill variant="primary">Total Active Users: {users.filter(user => {
+                            <Badge pill variant="primary">{t("Total Users")}: {users.length}</Badge>
+                            <Badge pill variant="primary">{t("Total Active Users")}: {users.filter(user => {
                                 return user.active==1
                             }).length}</Badge>
-                            <Badge pill variant="secondary">Total Users' Stock: {totalStocks}</Badge>
-                            <Badge pill variant="secondary">Total User Money: {totalMoney}</Badge>
-                            <Badge pill variant="secondary">Latest Activity: {latestActivity}</Badge>
+                            <Badge pill variant="secondary">{t("Total Users' Stock")}: {totalStocks}</Badge>
+                            <Badge pill variant="secondary">{t("Total User Money")}: {totalMoney}</Badge>
+                            <Badge pill variant="secondary">{t("Latest Activity")}: {latestActivity}</Badge>
                     </div>
                     <BootstrapTable
                         keyField='userId'

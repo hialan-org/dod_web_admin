@@ -2,8 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {EMAIL} from "../constants/data";
 import {getListUser, login} from "../utils/APIUtils";
 
+import "../i18n/i18n";
+import { useTranslation } from "react-i18next";
+
 function Homepage(props) {
     const [email, setEmail] = useState("");
+
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         if(props.authenticated){
@@ -14,13 +19,16 @@ function Homepage(props) {
     return (
         <div style={styles.screen}>
             <div style={styles.body}>
-                <h1>Dog of The Dow Management</h1>
+                <button onClick={() => i18n.changeLanguage('en')}>en</button>
+                <button onClick={() => i18n.changeLanguage('es')}>es</button>
+                <button onClick={() => i18n.changeLanguage('pt')}>pt</button>
+                <h1>{t("Dog of The Dow Management")}</h1>
                 {
                     props.authenticated ?
                         (
                             <>
-                                <h2 style={styles.text}>User: {email}</h2>
-                                <a href="#" onClick={props.logout}>Logout</a>
+                                <h2 style={styles.text}>{t("User")}: {email}</h2>
+                                <a href="#" onClick={props.logout}>{t("Logout")}</a>
                             </>
                         ) : ""
                 }
