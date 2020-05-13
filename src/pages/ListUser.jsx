@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Table from "react-bootstrap/Table";
-import {deleteUser, getListUser, getTotalUserMoney, getTotalUserStock} from "../utils/APIUtils";
+import {deleteUser, getLatestActivity, getListUser, getTotalUserMoney, getTotalUserStock} from "../utils/APIUtils";
 import {ROLE, ROLE_ADMIN, EMAIL} from "../constants/data";
 import {Redirect} from "react-router-dom";
 
@@ -18,6 +18,7 @@ function ListUser(props) {
 
     const [totalStocks, setTotalStocks] = useState("");
     const [totalMoney, setTotalMoney] = useState("");
+    const [latestActivity, setLatestActivity] = useState("");
 
     useEffect(() => {
         if ((sessionStorage.getItem(ROLE) && sessionStorage.getItem(ROLE) !== ROLE_ADMIN)
@@ -35,7 +36,24 @@ function ListUser(props) {
             getTotalUserMoney().then(result => {
                 console.log("getTotalUserMoney:"+result.body);
                 let val = Math.round(result.body);
-                setTotalMoney(val.toString(10));
+
+                let formatter = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                });
+                formatter.format(val); /* $2,500.00 */
+
+                setTotalMoney(formatter.format(val));
+            }).catch(err => {
+                console.log(err);
+            });
+
+            getLatestActivity().then(result => {
+                console.log("getLatestActivity: "+result.body);
+                let date= new Date(result.body);
+                //dateString=dateString+"";
+                let dateString=date.toLocaleDateString()+' '+date.toLocaleTimeString();
+                setLatestActivity(dateString);
             }).catch(err => {
                 console.log(err);
             });
@@ -125,8 +143,9 @@ function ListUser(props) {
                             <Badge pill variant="primary">Total Active Users: {users.filter(user => {
                                 return user.active==1
                             }).length}</Badge>
-                            <Badge pill variant="secondary">Total Users's Stock: {totalStocks}</Badge>
-                            <Badge pill variant="secondary">Total Amount of User Money: {totalMoney}</Badge>
+                            <Badge pill variant="secondary">Total Users' Stock: {totalStocks}</Badge>
+                            <Badge pill variant="secondary">Total User Money: {totalMoney}</Badge>
+                            <Badge pill variant="secondary">Latest Activity: {latestActivity}</Badge>
                     </div>
                     <BootstrapTable
                         keyField='userId'

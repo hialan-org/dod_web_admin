@@ -84,3 +84,13 @@ export function getTotalUserMoney() {
         method: 'GET'
     })
 }
+
+export function getLatestActivity() {
+    if(!sessionStorage.getItem(ACCESS_TOKEN)) {
+        return Promise.reject("No access token set.");
+    }
+    return request({
+        url: API_BASE_URL + "/statistics/getLatestActivityTime",
+        method: 'GET'
+    })
+}
