@@ -1,0 +1,27 @@
+const messages = {
+    "Dog of The Dow Management" : "Perro de la gerencia de Dow",
+    "Logout" : "Cerrar sesión",
+    "DoD Admin" : "DoD Admin",
+    "Home" : "Casa",
+    "Users" : "Los usuarios",
+    "User" : "el usuario",
+    "Login" : "Iniciar sesión",
+    "Total Users" : "Total de usuarios",
+    "Total Active Users" : "Total de usuarios activos",
+    "Total Users' Stock" : "Stock total de usuarios",
+    "Total User Money" : "Total de dinero del usuario",
+    "Latest Activity" : "Última actividad",
+    "User ID" : "ID de usuario",
+    "Email" : "Correo electrónico",
+    "Created Date" : "Fecha de creación",
+    "Role" : "Papel",
+    "Status" : "Estado",
+    "Actions" : "Comportamiento",
+    "Delete" : "Eliminar",
+    "Active" : "Activo",
+    "De-Active" : "Inactivo",
+    "user" : "usuario",
+    "admin" : "administración",
+};
+
+export default messages;
